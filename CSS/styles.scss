@@ -1,4 +1,60 @@
 html,body{
     padding: 0;
     margin: 0;
+    height: 100vh;
+}
+:root{
+    --color_primary:#20268C ;
+    --color_secondary: #1D2059;
+    --color_bg: #262626;
+    --color_white: white;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    header{
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        background-color: var(--color_secondary);
+        height: 100px;
+        border-bottom: 1px solid var(--color_secondary);
+        .logo{
+            height: 70px;
+            width: 100px;
+        }
+        .btn{
+            width: 100px;
+            border-radius: 25%;
+        }
+    }
+    main{
+        display: flex;
+        height: 100%;
+        
+        aside{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            gap: 1rem;
+            border-right: 1px solid var(--color_secondary);
+            width: 30%;
+            background: rgb(29,32,89);
+            // background: linear-gradient(0deg,  rgba(38,38,38,0.969625350140056) 20%, rgba(29,32,89,1) 80%);
+            background: linear-gradient(0deg, rgba(32,38,140,0.8883928571428571) 27%, rgba(29,32,89,1) 62%, rgba(38,38,38,1) 82%);
+            .imagen{
+                height: 200px;
+                width: 300px;
+                background-image: url("../img/logo.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+        section{
+            padding: 1rem;
+            background-image: url(../img/css-dark-background.png);
+            width: 70%;
+        }
+    }
 }

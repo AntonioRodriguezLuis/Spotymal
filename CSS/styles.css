@@ -1,5 +1,87 @@
 html, body {
   padding: 0;
   margin: 0;
+  height: 100vh;
+}
+
+:root {
+  --color_primary:#20268C ;
+  --color_secondary: #1D2059;
+  --color_bg: #262626;
+  --color_white: white;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 1rem;
+  background-color: var(--color_secondary);
+  height: 100px;
+  border-bottom: 1px solid var(--color_secondary);
+}
+
+body header .logo {
+  height: 70px;
+  width: 100px;
+}
+
+body header .btn {
+  width: 100px;
+  border-radius: 25%;
+}
+
+body main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+body main aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  border-right: 1px solid var(--color_secondary);
+  width: 30%;
+  background: #1d2059;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(27%, rgba(32, 38, 140, 0.888393)), color-stop(62%, #1d2059), color-stop(82%, #262626));
+  background: linear-gradient(0deg, rgba(32, 38, 140, 0.888393) 27%, #1d2059 62%, #262626 82%);
+}
+
+body main aside .imagen {
+  height: 200px;
+  width: 300px;
+  background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+body main section {
+  padding: 1rem;
+  background-image: url(../img/css-dark-background.png);
+  width: 70%;
 }
 /*# sourceMappingURL=styles.css.map */
