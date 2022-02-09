@@ -65,6 +65,10 @@ body main aside #imagen {
   background-position: center;
 }
 
+body main aside #imagen.kimetsuCancion {
+  background-image: url("../img/kimetsu.jpg");
+}
+
 body main aside audio {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
