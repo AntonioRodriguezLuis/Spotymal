@@ -1,5 +1,152 @@
 html, body {
   padding: 0;
   margin: 0;
+  height: 100vh;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+body main aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem;
+  padding-bottom: 0;
+  gap: 1rem;
+  width: 20%;
+  background: #262626;
+}
+
+body main aside div {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body main aside div .logo {
+  height: 70px;
+  width: 100px;
+}
+
+body main aside div h1 {
+  margin-top: 30px;
+  color: white;
+}
+
+body main aside #imagen {
+  height: 200px;
+  width: 100%;
+  background-image: url("../img/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+body main aside audio {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 100%;
+}
+
+body main aside h2 {
+  color: white;
+}
+
+body main aside .botones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main aside .botones div {
+  height: 30%;
+  width: 60px;
+  background-color: #20268c;
+  color: white;
+  border-radius: 5px;
+}
+
+body main aside .botones div p {
+  margin: auto;
+}
+
+body main aside p {
+  color: white;
+  margin-bottom: 5px;
+}
+
+body main section {
+  padding: 1rem;
+  background-color: #262626;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body main section .cancionInfo {
+  height: 20%;
+  border: 4px solid #1d2059;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+body main section .cancionInfo #kimetsu {
+  height: 100%;
+  width: 60%;
+  background-image: url("../img/kimetsu.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+body main section .cancionInfo .info {
+  width: 40%;
+}
+
+body main section .cancionInfo .info div {
+  height: 100%;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=styles.css.map */
