@@ -1,60 +1,130 @@
-html,body{
+@mixin imagenes {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+html,body {
     padding: 0;
     margin: 0;
     height: 100vh;
 }
-:root{
-    --color_primary:#20268C ;
-    --color_secondary: #1D2059;
-    --color_bg: #262626;
-    --color_white: white;
-}
-body{
+$color_primary: #20268c;
+$color_secondary: #1d2059;
+$color_bg: #262626;
+$color_white: white;
+
+body {
     display: flex;
     flex-direction: column;
-    header{
-        display: flex;
-        justify-content: flex-start;
-        gap: 1rem;
-        background-color: var(--color_secondary);
-        height: 100px;
-        border-bottom: 1px solid var(--color_secondary);
-        .logo{
-            height: 70px;
-            width: 100px;
-        }
-        .btn{
-            width: 100px;
-            border-radius: 25%;
-        }
-    }
-    main{
+    main {
         display: flex;
         height: 100%;
-        
-        aside{
+
+        aside {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2rem;
+            padding-bottom: 0;
             gap: 1rem;
-            border-right: 1px solid var(--color_secondary);
-            width: 30%;
-            background: rgb(29,32,89);
-            // background: linear-gradient(0deg,  rgba(38,38,38,0.969625350140056) 20%, rgba(29,32,89,1) 80%);
-            background: linear-gradient(0deg, rgba(32,38,140,0.8883928571428571) 27%, rgba(29,32,89,1) 62%, rgba(38,38,38,1) 82%);
-            .imagen{
+            width: 20%;
+            background: $color_bg;
+            div{
+                height: 100px;
+                display: flex;
+                .logo {
+                    height: 70px;
+                    width: 100px;
+                }
+                h1{
+                    margin-top: 30px;
+                    color: $color_white;
+                }
+            }
+            #imagen {
                 height: 200px;
-                width: 300px;
+                width: 100%;
                 background-image: url("../img/logo.png");
-                background-size: contain;
                 background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+            }
+            #imagen.kimetsuCancion{
+                background-image: url("../img/kimetsu.jpg");
+            }
+            audio {
+                align-self: center;
+                width: 100%;
+            }
+            h2{
+                color: $color_white;
+            }
+            .botones{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                div{
+                    height: 30%;
+                    width: 60px;
+                    background-color: $color_primary;
+                    color: $color_white;
+                    border-radius: 5px;
+                    p{
+                        margin: auto;
+                    }
+                }
+            }
+            p{
+                color: $color_white;
+                margin-bottom: 5px;
+                
             }
         }
-        section{
+        section {
             padding: 1rem;
-            background-image: url(../img/css-dark-background.png);
-            width: 70%;
+            // background-image: url(../img/css-dark-background.png);
+            background-color: $color_bg;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .cancionInfo{
+                border:  4px solid $color_secondary;
+                display: flex;
+                gap: 20px;
+                width: fit-content;
+                
+                #kimetsu{
+                    height: 100%;
+                    width: 30%;
+                    background-image: url("../img/kimetsu.jpg");
+                    @include imagenes;
+                }
+                .info{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-around;
+                    gap: 1rem;
+                    font-size: 1.5rem;
+                    color: $color_white;
+                    h2{
+                        text-align: center;
+                        width: 100%;
+                        margin: 0;
+                    }
+                    p{
+                        margin: 0;
+                    }
+                    div{
+                        height: 100%;
+                        color: $color_white;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
         }
     }
 }

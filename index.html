@@ -10,24 +10,36 @@
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="./img/logo.png" alt="Logo"><h1>Spotymal</h1>
-        <button class="btn">Audio</button>
-        <button class="btn">Video</button>
-    </header>
     <main>
         <aside>
-            <div class="imagen"></div>
-            <audio controls>
-                <source src="audio.ogg" type="audio/ogg">
-                <source src="audio.mp3" type="audio/mpeg">
+            <div class="divLogo">
+                <img class="logo" src="./img/logo.png" alt="Logo">
+                <h1>Spotymal</h1>
+            </div>
+            <div class="vacio" id="imagen"></div>
+            <audio controls id="audioPlayer">
+                <source src="audio.ogg" type="audio/ogg" id="ogg">
+                <source src="" type="audio/mpeg" id="mp3">
             </audio>
-            <p>Creado por: ejemplo</p>
+            <h2>Titulo Canción</h2>
+            <div class="botones">
+                <div id="audio"><p>Audio</p></div>
+                <div id="video"><p>Video</p></div>
+            </div>
+            <p>Creado por: Antonio y Pablo</p>
         </aside>
         <section>
-            <div>hola</div>
+            <div id="cancion1" class="cancionInfo">
+                <div id="kimetsu"></div>
+                <div id="kimetsuInfo" class="info">
+                    <h2 class="titulo" id="gurenge">Kimetsu no yaiba Opening 1: Gurenge</h2>
+                    <p>Artista: LiSA</p>
+                    <p>Duración: 3:56 min</p>
+                </div>
+            </div>
         </section>
     </main>
+    <script src="JS/script.js"></script>
 </body>
 
 </html>
