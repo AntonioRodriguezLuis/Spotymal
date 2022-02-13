@@ -2,129 +2,302 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    
+
 }
-html,body {
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+html,
+body {
     padding: 0;
     margin: 0;
     height: 100vh;
 }
+
+//COLORES ANTIGUOS
+// $color_primary: #20268c;
+// $color_secondary: #1d2059;
+// $color_bg: #262626;
+// $color_white: white;
+// $colorImput: #314B81;
+
 $color_primary: #20268c;
 $color_secondary: #1d2059;
-$color_bg: #262626;
+$color_bg: black;
 $color_white: white;
+$m01: #667eea;
+/* main 1*/
+$m02: #764ba2;
+/* main 2*/
+$bg_tab: #393939;
+$list_element_active: #ff5d12;
 
 body {
     display: flex;
-    flex-direction: column;
+    background-color: $color_bg;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 19px;
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        padding-bottom: 0;
+        gap: 1rem;
+        width: 40%;
+        div {
+            display: flex;
+            gap: 1rem;
+            .logo {
+                height: 70px;
+                width: 100px;
+            }
+
+            h1 {
+                font-family: 'Paytone One';
+                font-size: 34px;
+                margin: 0;
+                margin-top: 3%;
+                color: $color_white;
+                
+            }
+        }
+
+        h2 {
+            color: $color_white;
+        }
+
+        #imagen-active {
+            min-height: 275px;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        #reproductor {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 1rem;
+            justify-content: center;
+            align-items: center;
+
+            .img {
+                height: 38px;
+                width: 38px;
+            }
+
+            .play {
+                height: 48px;
+                width: 48px;
+            }
+        }
+
+        #titulo-actual {
+            color: $color_white;
+            text-align: center;
+        }
+
+        #tiempo {
+            display: flex;
+            gap: 0.5rem;
+            color: $color_white;
+            justify-content: center;
+
+            input[type=range] {
+                width: 300px;
+                background-color: #ff5d12;
+            }
+
+            // input[type=range]:focus {
+            //     outline: none;
+            // }
+            // input[type=range]::-ms-thumb {
+            //     background-color: #777;
+            //     width: 20px;
+            //     height: 20px;
+            //     border: 3px solid #333;
+            //     border-radius: 50%;
+            // }
+            // input[type=range]::-range-track {
+            //     background-color: #777;
+            //     height: 3px;
+            // }
+            // input[type=range]::-ms-fill-lower {
+            //     background-color: HotPink;
+            // }
+            // input[type=range]::-ms-fill-upper {
+            //     background-color: black;
+            // }
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            color: $color_white;
+            gap: 1rem;
+            width: 80%;
+            align-self: center;
+
+            .info-cancion {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: flex-start;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+        }
+
+    }
+
     main {
         display: flex;
+        flex-direction: column;
         height: 100%;
+        width: 60%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        .content {
+            padding: 1.5rem 1rem 1.5rem 0rem;
+            transition: 0.3s ease;
+         }
+         
+         /* Tabs menu */
+         .tabs {
+            display: flex;
+            align-items: center;
+         }
+         /* Tab Links */
+         .tablinks {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 50%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Paytone One';
+            font-size: 18px;
+            background-color: $bg_tab;
+         }
+         
+        
+         /*tab buttons hover*/
+        //  .tablinks:hover {
+        //     background-image: linear-gradient(135deg, $m01 0%, $m02 100%);
+        //  }
 
-        aside {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            padding-bottom: 0;
-            gap: 1rem;
-            width: 20%;
-            background: $color_bg;
-            div{
-                height: 100px;
-                display: flex;
-                .logo {
-                    height: 70px;
-                    width: 100px;
-                }
-                h1{
-                    margin-top: 30px;
-                    color: $color_white;
-                }
-            }
-            #imagen {
-                height: 200px;
-                width: 100%;
-                background-image: url("../img/logo.png");
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-            }
-            #imagen.kimetsuCancion{
-                background-image: url("../img/kimetsu.jpg");
-            }
-            audio {
-                align-self: center;
-                width: 100%;
-            }
-            h2{
-                color: $color_white;
-            }
-            .botones{
-                display: flex;
-                gap: 20px;
-                align-items: center;
-                div{
-                    height: 30%;
-                    width: 60px;
-                    background-color: $color_primary;
-                    color: $color_white;
-                    border-radius: 5px;
-                    p{
-                        margin: auto;
-                    }
-                }
-            }
-            p{
-                color: $color_white;
-                margin-bottom: 5px;
-                
-            }
+         /* Tab active */
+         .tablinks.active {
+            background-image: linear-gradient(175deg, #7550a9 0%, #667eea 50%, #6b6fd5 100%);
+         }
+         .tablinks:not(.active) {
+           opacity: 0.4;
         }
-        section {
+         
+         .tablinks p {
+            color: white;
+         }
+         
+         .tablinks:hover p {
+            color: white;
+         }
+         
+         /* tab content */
+         .wrapper_tabcontent {
             padding: 1rem;
-            // background-image: url(../img/css-dark-background.png);
-            background-color: $color_bg;
-            width: 80%;
+            overflow-y: auto;
+            transition: all 1s ease;
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         }
+         
+         .tabcontent {
+            display: none;
+            transition: all 1s ease;
+            animation: fadeEffect 2s ease;
+            color: $color_white;//QUITAR DESPUES DE poner video
+         }
+         
+         .tabcontent.active {
+            transition: all 1s ease;
+            display: block;
+         }
+         
+        @keyframes fadeEffect {
+            from {
+               opacity: 0;
+               margin-left: 40%;
+            }
+            to {
+               opacity: 1;
+               margin-left: 0;
+            }
+         }
+
+        #listaMusica {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            .cancionInfo{
-                border:  4px solid $color_secondary;
+            gap: 1rem;
+
+            .cancion {
                 display: flex;
-                gap: 20px;
-                width: fit-content;
-                
-                #kimetsu{
-                    height: 100%;
-                    width: 30%;
-                    background-image: url("../img/kimetsu.jpg");
-                    @include imagenes;
+                align-items: center;
+                height: 50px;
+                gap: 1rem;
+                cursor: pointer;
+
+                .icon {
+                    height: 20px;
+                    width: 20px;
                 }
-                .info{
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: space-around;
-                    gap: 1rem;
-                    font-size: 1.5rem;
+
+                .imagen-cancion {
+                    height: 100%;
+                    width: 250px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                table.cancion-info {
+                    width: 100%;
                     color: $color_white;
-                    h2{
-                        text-align: center;
-                        width: 100%;
-                        margin: 0;
+
+                    th {
+                        text-align: start;
+                        font-size: 13px;
                     }
-                    p{
-                        margin: 0;
+
+                    td {
+                        width: 100px;
+                        vertical-align: initial;
                     }
-                    div{
-                        height: 100%;
-                        color: $color_white;
-                        display: flex;
-                        align-items: center;
+
+                    .duracion {
+                        max-width: 45px;
                     }
+
                 }
             }
+
+            .cancion.active {
+                border: 3px solid $list_element_active;
+                border-radius: 10px;
+                padding: 10px;                
+                transform: scale(1, 1.2);
+            }
         }
+
+    }
+
+    .oculto {
+        display: none;
+    }
+
+    .disable-div {
+        pointer-events: none;
+        opacity: 0.4;
     }
 }

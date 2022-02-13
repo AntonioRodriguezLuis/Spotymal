@@ -1,10 +1,23 @@
-html, body {
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+html,
+body {
   padding: 0;
   margin: 0;
   height: 100vh;
 }
 
+/* main 1*/
+/* main 2*/
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 19px;
+}
+
+body aside {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,105 +25,234 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 1rem;
+  padding-bottom: 0;
+  gap: 1rem;
+  width: 40%;
+}
+
+body aside div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+body aside div .logo {
+  height: 70px;
+  width: 100px;
+}
+
+body aside div h1 {
+  font-family: 'Paytone One';
+  font-size: 34px;
+  margin: 0;
+  margin-top: 3%;
+  color: white;
+}
+
+body aside h2 {
+  color: white;
+}
+
+body aside #imagen-active {
+  min-height: 275px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+body aside #reproductor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body aside #reproductor .img {
+  height: 38px;
+  width: 38px;
+}
+
+body aside #reproductor .play {
+  height: 48px;
+  width: 48px;
+}
+
+body aside #titulo-actual {
+  color: white;
+  text-align: center;
+}
+
+body aside #tiempo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body aside #tiempo input[type=range] {
+  width: 300px;
+  background-color: #ff5d12;
+}
+
+body aside .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+  gap: 1rem;
+  width: 80%;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+body aside .info .info-cancion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+body aside .info .info-cancion h3 {
+  margin: 0;
 }
 
 body main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
-}
-
-body main aside {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 2rem;
-  padding-bottom: 0;
-  gap: 1rem;
-  width: 20%;
-  background: #262626;
+  height: 100%;
+  width: 60%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15px;
+  /* Tabs menu */
+  /* Tab Links */
+  /*tab buttons hover*/
+  /* Tab active */
+  /* tab content */
 }
 
-body main aside div {
-  height: 100px;
+body main .content {
+  padding: 1.5rem 1rem 1.5rem 0rem;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+body main .tabs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-body main aside div .logo {
-  height: 70px;
-  width: 100px;
-}
-
-body main aside div h1 {
-  margin-top: 30px;
-  color: white;
-}
-
-body main aside #imagen {
-  height: 200px;
-  width: 100%;
-  background-image: url("../img/logo.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-body main aside #imagen.kimetsuCancion {
-  background-image: url("../img/kimetsu.jpg");
-}
-
-body main aside audio {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  width: 100%;
-}
-
-body main aside h2 {
-  color: white;
-}
-
-body main aside .botones {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-body main aside .botones div {
-  height: 30%;
-  width: 60px;
-  background-color: #20268c;
+body main .tablinks {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 50%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Paytone One';
+  font-size: 18px;
+  background-color: #393939;
+}
+
+body main .tablinks.active {
+  background-image: linear-gradient(175deg, #7550a9 0%, #667eea 50%, #6b6fd5 100%);
+}
+
+body main .tablinks:not(.active) {
+  opacity: 0.4;
+}
+
+body main .tablinks p {
   color: white;
-  border-radius: 5px;
 }
 
-body main aside .botones div p {
-  margin: auto;
-}
-
-body main aside p {
+body main .tablinks:hover p {
   color: white;
-  margin-bottom: 5px;
 }
 
-body main section {
+body main .wrapper_tabcontent {
   padding: 1rem;
-  background-color: #262626;
-  width: 80%;
+  overflow-y: auto;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body main .tabcontent {
+  display: none;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  -webkit-animation: fadeEffect 2s ease;
+          animation: fadeEffect 2s ease;
+  color: white;
+}
+
+body main .tabcontent.active {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  display: block;
+}
+
+@-webkit-keyframes fadeEffect {
+  from {
+    opacity: 0;
+    margin-left: 40%;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+    margin-left: 40%;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+body main #listaMusica {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,65 +260,67 @@ body main section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  gap: 1rem;
 }
 
-body main section .cancionInfo {
-  border: 4px solid #1d2059;
+body main #listaMusica .cancion {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 20px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  gap: 1rem;
+  cursor: pointer;
 }
 
-body main section .cancionInfo #kimetsu {
+body main #listaMusica .cancion .icon {
+  height: 20px;
+  width: 20px;
+}
+
+body main #listaMusica .cancion .imagen-cancion {
   height: 100%;
-  width: 30%;
-  background-image: url("../img/kimetsu.jpg");
+  width: 250px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
 }
 
-body main section .cancionInfo .info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  gap: 1rem;
-  font-size: 1.5rem;
-  color: white;
-}
-
-body main section .cancionInfo .info h2 {
-  text-align: center;
+body main #listaMusica .cancion table.cancion-info {
   width: 100%;
-  margin: 0;
-}
-
-body main section .cancionInfo .info p {
-  margin: 0;
-}
-
-body main section .cancionInfo .info div {
-  height: 100%;
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+body main #listaMusica .cancion table.cancion-info th {
+  text-align: start;
+  font-size: 13px;
+}
+
+body main #listaMusica .cancion table.cancion-info td {
+  width: 100px;
+  vertical-align: initial;
+}
+
+body main #listaMusica .cancion table.cancion-info .duracion {
+  max-width: 45px;
+}
+
+body main #listaMusica .cancion.active {
+  border: 3px solid #ff5d12;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-transform: scale(1, 1.2);
+          transform: scale(1, 1.2);
+}
+
+body .oculto {
+  display: none;
+}
+
+body .disable-div {
+  pointer-events: none;
+  opacity: 0.4;
 }
 /*# sourceMappingURL=styles.css.map */
