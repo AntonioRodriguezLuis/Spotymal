@@ -23,8 +23,8 @@ var strMusica = `[{"id":0,"srcImagen":"../img/kimetsu.jpg","anime":"Kimetsu no y
 {"id":5,"srcImagen":"../img/narutoShippuden.jpg","anime":"Naruto Shippuden","titulo":"Blue Bird","artista":"Ikimonogakari","duracion":"3:34 min","srcMusica":"../music/blueBird.mp3"},
 {"id":6,"srcImagen":"../img/Shigatsu_wa_Kimi_no_Uso.jpg","anime":"Shigatsu wa Kimi no Uso","titulo":"Hikaru Nara","artista":"Goose House","duracion":"4:11 min","srcMusica":"../music/hikaruNara.mp3"},
 {"id":7,"srcImagen":"../img/onePiece.jpg","anime":"One Piece","titulo":"Dreamin' On","artista":"Da-iCE","duracion":"1:59 min","srcMusica":"../music/dreaminOn.mp3"}]`;
-var idActual = 0;
-var audio = new Audio();
+var idActual = 0;// Variable global para saber que audio se esta ejecutando
+var audio = new Audio();// Creamos el audio
 
 (function () {
     listaMusica = JSON.parse(strMusica);
@@ -35,33 +35,37 @@ var audio = new Audio();
     DOM.siguiente.addEventListener('click', siguiente);
     DOM.pause.addEventListener('click', pause);
     DOM.pause.classList.add("oculto");
-    DOM.anterior.classList.add("disable-div");    
+    DOM.anterior.classList.add("disable-div");
 
+    // Cuando termina de cargar el audio ejecuta este listener, que asigna el tiempo de inicio y total del audio 
     audio.addEventListener("loadeddata", () => {        
         DOM.tiempoActual.textContent = "00:00";
         var duracionCustom = personalizarTiempo(audio.duration);
         defaultRange(audio.duration);
         DOM.tiempoTotal.textContent = duracionCustom;
     });
-
+    // Cuando el audio empieza a reproducirse va actualizando el label cada segundo
     audio.addEventListener("timeupdate", () => {
         var tiempoCustom = personalizarTiempo(audio.currentTime);        
         DOM.tiempoActual.textContent = tiempoCustom;
         DOM.inputRange.value = audio.currentTime;
     });
 
+    // Justo cuando termine
     audio.addEventListener("ended", () => {
         pause();
     });
 
+    // Carga la primera cancion por defecto
     cargaPorDefecto();
 
+    // Este listener se dispara cuado cambias el input manualmente y pone la cancion en ese punto(Es como adelantar en un video de youtube)
     DOM.inputRange.addEventListener("change", () => {
         pause();
         audio.currentTime = DOM.inputRange.value;      
         play();
     });
-
+    // Añade el evento click a los tabs
     DOM.tabLinks.forEach(function(elemento) {
         elemento.addEventListener("click", abrirTabs);
     });
@@ -156,6 +160,7 @@ function generarListaMusica() {
     });
 }
 
+// Esta funcion se dispara cuando hcemos click en alguna de la lista de canciones, reproduce la cancion seleccionada
 function reproducirAudio() {
     actualizarCancion(idActual);
     play();
@@ -169,19 +174,19 @@ function reproducirAudio() {
         DOM.siguiente.classList.add("disable-div");
     }
 }
-
+//Play
 function play() {   
     audio.play();
     DOM.play.classList.add("oculto");
     DOM.pause.classList.remove("oculto");
 }
-
+// Pausa
 function pause() {
     audio.pause();
     DOM.play.classList.remove("oculto");
     DOM.pause.classList.add("oculto");
 }
-
+//Esta funcion pasa a la cancion anterior
 function anterior() {
     var idAnterior = idActual;
     if (idAnterior != 0) {
@@ -194,7 +199,7 @@ function anterior() {
         DOM.anterior.classList.add("disable-div");
     }
 }
-
+// Esta funcion pasa a la siguente cancion
 function siguiente() {
     var idSiguiente = idActual;
     if (idSiguiente != listaMusica.length-1) {
@@ -207,7 +212,7 @@ function siguiente() {
         DOM.siguiente.classList.add("disable-div");
     }
 }
-
+//Esta funcion actualiza la cancion que se esta escuchando en este momento
 function actualizarCancion(id) {
     var element = DOM.listaMusica.children[id];
     activarCancion(element);
@@ -217,16 +222,16 @@ function actualizarCancion(id) {
     DOM.imagenActive.style.backgroundImage = "url('" + listaMusica[id].srcImagen + "')";
     audio.src = listaMusica[idActual].srcMusica;
 }
-
+// Carga la primera cancion por defecto
 function cargaPorDefecto() {
     actualizarCancion(idActual);
 }
-
+// Carga el input range con la duracion de la cancion y le asigna el valor 0 para colocarlo al inicio.
 function defaultRange(duracion) {
     DOM.inputRange.max = duracion;
     DOM.inputRange.value = 0;
 }
-
+// Aqui hago una operacion matematica para obtener el formato correcto y numeros enteros.
 function personalizarTiempo(tiempo) {
     const resto = tiempo % 3600;
     const minutos = Math.floor(resto / 60);
@@ -237,7 +242,7 @@ function personalizarTiempo(tiempo) {
   
     return `${mm}:${ss}`;
 }
-
+// Esta funcion hace el cambio de tabs
 function abrirTabs(elemento) {
    var btnTarget = elemento.currentTarget;   
    var option = btnTarget.dataset.option;
@@ -253,14 +258,14 @@ function abrirTabs(elemento) {
    document.querySelector("#" + option).classList.add("active");
    btnTarget.classList.add("active");
 }
-
+// Esta funcion es la que marca que cacncion esta activa
 function activarCancion(elemento) {
     borrarCancionActiva();
     elemento.classList.add("active");
     elemento.getElementsByTagName("img")[0].classList.add("oculto");
     elemento.getElementsByTagName("img")[1].classList.remove("oculto");
 }
-
+// Esta funcion es la que borra la cacncion que esta activa
 function borrarCancionActiva() {
     var elemento = DOM.listaMusica.querySelector(".cancion.active");
     if(elemento != null) {
@@ -273,7 +278,6 @@ function borrarCancionActiva() {
 
 //TO DO
 /*
-- botones de reproductor se ponga la manita en el raton
 - color del input range naranja 
-- hover a los botones quisas un gradiente de naranja a blanco.
+- dar un alto a la caja y sino que le salga un scroll
 */ 

@@ -6,8 +6,6 @@ body {
   height: 100vh;
 }
 
-/* main 1*/
-/* main 2*/
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -87,6 +85,10 @@ body aside #reproductor .play {
   width: 48px;
 }
 
+body aside #reproductor #anterior, body aside #reproductor #siguiente, body aside #reproductor .play {
+  cursor: pointer;
+}
+
 body aside #titulo-actual {
   color: white;
   text-align: center;
@@ -103,9 +105,28 @@ body aside #tiempo {
           justify-content: center;
 }
 
-body aside #tiempo input[type=range] {
+body aside #tiempo .slider {
+  -webkit-appearance: none;
   width: 300px;
-  background-color: #ff5d12;
+  cursor: pointer;
+  height: 10px;
+  border-radius: 10px;
+  background: white;
+}
+
+body aside #tiempo .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background: #ff5d12;
+  border-radius: 50%;
+}
+
+body aside #tiempo .slider::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  background: #ff5d12;
+  border-radius: 50%;
 }
 
 body aside .info {
@@ -151,7 +172,6 @@ body main {
   font-size: 15px;
   /* Tabs menu */
   /* Tab Links */
-  /*tab buttons hover*/
   /* Tab active */
   /* tab content */
 }
