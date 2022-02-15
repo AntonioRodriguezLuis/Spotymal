@@ -7,30 +7,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotymal</title>
     <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="shortcut icon" href="./img/favicon-16x16.ico" type="image/x-icon">
 </head>
 
 <body>
+    <aside class="audio">
+        <div class="divLogo">
+            <img class="logo" src="./img/logo.png" alt="Logo">
+            <h1>Spotymal</h1>
+        </div>
+        <div class="divVideo">
+            <div id="video-controls" class="controls" data-state="hidden">
+                <video id="reproductorVideo">
+                </video>
+            </div>
+        </div>
+        <div class="divAudio">
+            <div id="imagen-active"></div>
+            <div id="tiempo">
+                <span id="tiempo-actual"></span>
+                <span>/</span>
+                <span id="tiempo-total"></span>
+                <input type="range" class="slider" id="range" min="0" step="0.1" value="0">
+            </div>
+
+            <div id="reproductor">
+                <img id="anterior" class="img" src="./img/anterior.svg" alt="">
+                <img id="play" class="play" src="./img/play.svg" alt="">
+                <img id="pause" class="play" src="./img/pause.svg" alt="">
+                <img id="siguiente" class="img" src="./img/siguiente.svg" alt="">
+            </div>
+            <div class="info">
+                <div class="info-cancion" id="animeAside">
+                    <h3>Anime: </h3>
+                    <h3 id="anime-actual"></h3>
+                </div>
+                <div class="info-cancion">
+                    <h3>Título: </h3>
+                    <h3 id="titulo-actual"></h3>
+                </div>
+                <div class="info-cancion" id="artistaAside">
+                    <h3>Artista: </h3>
+                    <h3 id="artista-actual"></h3>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </aside>
     <main>
-        <aside>
-            <div class="divLogo">
-                <img class="logo" src="./img/logo.png" alt="Logo">
-                <h1>Spotymal</h1>
+        <section class="content">
+            <!-- Tab links -->
+            <div class="tabs">
+                <button class="tablinks active" data-option="audio">
+                    <p>Audio</p>
+                </button>
+                <button class="tablinks" data-option="video">
+                    <p>Video</p>
+                </button>
             </div>
-            <div class="vacio" id="imagen"></div>
-            <audio controls id="audioPlayer">
-                <source src="audio.ogg" type="audio/ogg" id="ogg">
-                <source src="" type="audio/mpeg" id="mp3">
-            </audio>
-            <h2>Titulo Canción</h2>
-            <div class="botones">
-                <div id="audio"><p>Audio</p></div>
-                <div id="video"><p>Video</p></div>
-            </div>
-            <p>Creado por: Antonio y Pablo</p>
-        </aside>
-        <section>
-            <div id="listaMusica">
-        
+
+            <!-- Tab content -->
+            <div class="wrapper_tabcontent">
+                <div id="audio" class="tabcontent active">
+                    <section id="listaMusica"></section>
+                </div>
+
+                <div id="video" class="tabcontent">
+                    <section id="listaVideos"></section>
+                </div>
             </div>
         </section>
     </main>
