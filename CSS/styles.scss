@@ -1,4 +1,289 @@
-html,body{
+@mixin imagenes {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+html,
+body {
     padding: 0;
     margin: 0;
+    height: 100vh;
+}
+
+$color_primary: #20268c;
+$color_secondary: #1d2059;
+$color_bg: black;
+$color_white: white;
+$color_gradiente_1: #667eea;
+$color_gradiente_2: #764ba2;
+$bg_tab: #393939;
+$list_element_active: #ff5d12;
+
+body {
+    display: flex;
+    background-color: $color_bg;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 19px;
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        padding-bottom: 0;
+        gap: 1rem;
+        width: 40%;
+        div {
+            display: flex;
+            gap: 1rem;
+            .logo {
+                height: 70px;
+                width: 100px;
+            }
+
+            h1 {
+                font-family: 'Paytone One';
+                font-size: 34px;
+                margin: 0;
+                margin-top: 3%;
+                color: $color_white;
+                
+            }
+        }
+
+        h2 {
+            color: $color_white;
+        }
+
+        #imagen-active {
+            min-height: 275px;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        #reproductor {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 1rem;
+            justify-content: center;
+            align-items: center;
+
+            .img {
+                height: 38px;
+                width: 38px;
+            }
+
+            .play {
+                height: 48px;
+                width: 48px;
+            }
+            #anterior, #siguiente, .play{
+                cursor: pointer;
+            }
+            
+        }
+
+        #titulo-actual {
+            color: $color_white;
+            text-align: center;
+        }
+
+        #tiempo {
+            display: flex;
+            gap: 0.5rem;
+            color: $color_white;
+            justify-content: center;
+
+           .slider{
+                -webkit-appearance: none;
+                width: 300px;
+                cursor: pointer;
+                height: 10px;
+                border-radius: 10px;
+                background: $color_white;
+           }
+           .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 20px;
+                background: $list_element_active;
+                border-radius: 50%;
+           }
+           //MOZ
+           .slider::-moz-range-thumb {
+                height: 20px;
+                width: 20px;
+                background: $list_element_active;
+                border-radius: 50%;
+            }
+            
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            color: $color_white;
+            gap: 1rem;
+            width: 80%;
+            align-self: center;
+
+            .info-cancion {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: flex-start;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+        }
+
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 60%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        .content {
+            padding: 1.5rem 1rem 1.5rem 0rem;
+            transition: 0.3s ease;
+         }
+         
+         /* Tabs menu */
+         .tabs {
+            display: flex;
+            align-items: center;
+         }
+         /* Tab Links */
+         .tablinks {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 50%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Paytone One';
+            font-size: 18px;
+            background-color: $bg_tab;
+         }
+
+         /* Tab active */
+         .tablinks.active {
+            background-image: linear-gradient(175deg, #7550a9 0%, $color_gradiente_1 50%, #6b6fd5 100%);
+         }
+         .tablinks:not(.active) {
+           opacity: 0.4;
+        }
+         
+         .tablinks p {
+            color: $color_white;
+         }
+         
+         .tablinks:hover p {
+            color: $color_white;
+         }
+         
+         /* tab content */
+         .wrapper_tabcontent {
+            padding: 1rem;
+            overflow-y: auto;
+            transition: all 1s ease;
+            background-image: linear-gradient(135deg, $color_gradiente_1 0%, $color_gradiente_2 100%);
+         }
+         
+         .tabcontent {
+            display: none;
+            transition: all 1s ease;
+            animation: fadeEffect 2s ease;
+            color: $color_white;//QUITAR DESPUES DE poner video
+         }
+         
+         .tabcontent.active {
+            transition: all 1s ease;
+            display: block;
+         }
+         
+        @keyframes fadeEffect {
+            from {
+               opacity: 0;
+               margin-left: 40%;
+            }
+            to {
+               opacity: 1;
+               margin-left: 0;
+            }
+         }
+
+        #listaMusica {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .cancion {
+                display: flex;
+                align-items: center;
+                height: 50px;
+                gap: 1rem;
+                cursor: pointer;
+
+                .icon {
+                    height: 20px;
+                    width: 20px;
+                }
+
+                .imagen-cancion {
+                    height: 100%;
+                    width: 250px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                table.cancion-info {
+                    width: 100%;
+                    color: $color_white;
+
+                    th {
+                        text-align: start;
+                        font-size: 13px;
+                    }
+
+                    td {
+                        width: 100px;
+                        vertical-align: initial;
+                    }
+
+                    .duracion {
+                        max-width: 45px;
+                    }
+
+                }
+            }
+
+            .cancion.active {
+                border: 3px solid $list_element_active;
+                border-radius: 10px;
+                padding: 10px;                
+                transform: scale(1, 1.2);
+            }
+        }
+
+    }
+
+    .oculto {
+        display: none;
+    }
+
+    .disable-div {
+        pointer-events: none;
+        opacity: 0.4;
+    }
 }

@@ -7,24 +7,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotymal</title>
     <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="shortcut icon" href="./img/favicon-16x16.ico" type="image/x-icon">
 </head>
 
 <body>
-    <header>
-        <img src="" alt="">
-        <div>
-            <button>Audio</button>
-            <button>Video</button>
-        </div>
-        
-    </header>
     <aside>
-        <audio controls>
-            <source src="audio.ogg" type="audio/ogg">
-            <source src="audio.mp3" type="audio/mpeg">
-        </audio>
+        <div class="divLogo">
+            <img class="logo" src="./img/logo.png" alt="Logo">
+            <h1>Spotymal</h1>
+        </div>
+        <div id="imagen-active"></div>
+        <div id="tiempo">
+            <span id="tiempo-actual"></span>
+            <span>/</span>
+            <span id="tiempo-total"></span>
+            <input type="range" class="slider" id="range" min="0" step="0.1" value="0">
+        </div>
+
+        <div id="reproductor">
+            <img id="anterior" class="img" src="./img/anterior.svg" alt="">
+            <img id="play" class="play" src="./img/play.svg" alt="">
+            <img id="pause" class="play" src="./img/pause.svg" alt="">
+            <img id="siguiente" class="img" src="./img/siguiente.svg" alt="">
+        </div>
+        <div class="info">
+            <div class="info-cancion">
+                <h3>Anime: </h3>
+                <h3 id="anime-actual"></h3>
+            </div>
+            <div class="info-cancion">
+                <h3>Título: </h3>
+                <h3 id="titulo-actual"></h3>
+            </div>
+            <div class="info-cancion">
+                <h3>Artista: </h3>
+                <h3 id="artista-actual"></h3>
+            </div>
+
+        </div>
+
     </aside>
-    <main></main>
+    <main>
+        <section class="content">
+            <!-- Tab links -->
+            <div class="tabs">
+                <button class="tablinks active" data-option="audio">
+                    <p>Audio</p>
+                </button>
+                <button class="tablinks" data-option="video">
+                    <p>Video</p>
+                </button>
+            </div>
+
+            <!-- Tab content -->
+            <div class="wrapper_tabcontent">
+                <div id="audio" class="tabcontent active">
+                    <section id="listaMusica"></section>
+                </div>
+
+                <div id="video" class="tabcontent">
+                    <h3>Hacer Video</h3>
+                    <video class="video-js" controls preload="auto" width="640" height="264" data-setup='{}'>
+                        <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                        <track kind="captions" src="//example.com/path/to/captions.vtt" srclang="en" label="English"
+                            default>
+                    </video>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="JS/script.js"></script>
 </body>
 
 </html>
