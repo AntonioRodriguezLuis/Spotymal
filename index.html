@@ -11,40 +11,52 @@
 </head>
 
 <body>
-    <aside>
+    <aside class="audio">
         <div class="divLogo">
             <img class="logo" src="./img/logo.png" alt="Logo">
             <h1>Spotymal</h1>
         </div>
-        <div id="imagen-active"></div>
-        <div id="tiempo">
-            <span id="tiempo-actual"></span>
-            <span>/</span>
-            <span id="tiempo-total"></span>
-            <input type="range" class="slider" id="range" min="0" step="0.1" value="0">
-        </div>
-
-        <div id="reproductor">
-            <img id="anterior" class="img" src="./img/anterior.svg" alt="">
-            <img id="play" class="play" src="./img/play.svg" alt="">
-            <img id="pause" class="play" src="./img/pause.svg" alt="">
-            <img id="siguiente" class="img" src="./img/siguiente.svg" alt="">
-        </div>
-        <div class="info">
-            <div class="info-cancion">
-                <h3>Anime: </h3>
-                <h3 id="anime-actual"></h3>
+        <div class="divVideo">
+            <div id="video-controls" class="controls" data-state="hidden">
+                <video id="reproductorVideo">
+                </video>
             </div>
-            <div class="info-cancion">
-                <h3>Título: </h3>
-                <h3 id="titulo-actual"></h3>
-            </div>
-            <div class="info-cancion">
-                <h3>Artista: </h3>
-                <h3 id="artista-actual"></h3>
+        </div>
+        <div class="divAudio">
+            <div id="imagen-active"></div>
+            <div id="tiempo">
+                <span id="tiempo-actual"></span>
+                <span>/</span>
+                <span id="tiempo-total"></span>
+                <input type="range" class="slider" id="range" min="0" step="0.1" value="0">
             </div>
 
+            <div id="reproductor">
+                <img id="anterior" class="img" src="./img/anterior.svg" alt="">
+                <img id="play" class="play" src="./img/play.svg" alt="">
+                <img id="pause" class="play" src="./img/pause.svg" alt="">
+                <img id="siguiente" class="img" src="./img/siguiente.svg" alt="">
+                <img id="volumen" class="img" src="./img/volume.png" alt="">
+                <img id="mute" class="img" src="./img/mute.png" alt="">
+            </div>
+            <div class="info">
+                <div class="info-cancion" id="animeAside">
+                    <h3>Anime: </h3>
+                    <h3 id="anime-actual"></h3>
+                </div>
+                <div class="info-cancion">
+                    <h3>Título: </h3>
+                    <h3 id="titulo-actual"></h3>
+                </div>
+                <div class="info-cancion" id="artistaAside">
+                    <h3>Artista: </h3>
+                    <h3 id="artista-actual"></h3>
+                </div>
+
+            </div>
         </div>
+
+
 
     </aside>
     <main>
@@ -66,12 +78,7 @@
                 </div>
 
                 <div id="video" class="tabcontent">
-                    <h3>Hacer Video</h3>
-                    <video class="video-js" controls preload="auto" width="640" height="264" data-setup='{}'>
-                        <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-                        <track kind="captions" src="//example.com/path/to/captions.vtt" srclang="en" label="English"
-                            default>
-                    </video>
+                    <section id="listaVideos"></section>
                 </div>
             </div>
         </section>
