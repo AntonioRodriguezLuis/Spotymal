@@ -220,6 +220,9 @@ body {
          .tablinks.active {
             background-image: linear-gradient(175deg, #7550a9 0%, $color_gradiente_1 50%, #6b6fd5 100%);
          }
+         .tablinks.active.gradienteInverso {
+            background-image: linear-gradient(130deg, #6b6fd5  0%, $color_gradiente_1 50%, #7550a9 100%);
+         }
          .tablinks:not(.active) {
            opacity: 0.4;
         }

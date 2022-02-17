@@ -55,6 +55,13 @@ var audio = new Audio();// Creamos el audio
         defaultRange(audio.duration);
         DOM.tiempoTotal.textContent = duracionCustom;
     });
+
+    DOM.video.addEventListener("loadeddata", () => {
+        DOM.tiempoActual.textContent = "00:00";
+        var duracionCustom = personalizarTiempo(DOM.video.duration);
+        defaultRange(DOM.video.duration);
+        DOM.tiempoTotal.textContent = duracionCustom;
+    });
     // Cuando el audio empieza a reproducirse va actualizando el label cada segundo
     audio.addEventListener("timeupdate", () => {
         var tiempoCustom = personalizarTiempo(audio.currentTime);
@@ -62,18 +69,32 @@ var audio = new Audio();// Creamos el audio
         DOM.inputRange.value = audio.currentTime;
     });
 
+    DOM.video.addEventListener("timeupdate", () => {
+        var tiempoCustom = personalizarTiempo(DOM.video.currentTime);
+        DOM.tiempoActual.textContent = tiempoCustom;
+        DOM.inputRange.value = DOM.video.currentTime;
+    });
     // Justo cuando termine
     audio.addEventListener("ended", () => {
+        pause();
+    });
+    DOM.video.addEventListener("ended", () => {
         pause();
     });
 
     // Carga la primera cancion por defecto
     cargaPorDefecto();
+    cargaVideoPorDefecto();
 
     // Este listener se dispara cuado cambias el input manualmente y pone la cancion en ese punto(Es como adelantar en un video de youtube)
     DOM.inputRange.addEventListener("change", () => {
         pause();
-        audio.currentTime = DOM.inputRange.value;
+        if (DOM.aside.classList.value == "audio") {
+            audio.currentTime = DOM.inputRange.value;
+        }
+        if (DOM.aside.classList.value == "video") {
+            DOM.video.currentTime = DOM.inputRange.value;
+        }
         play();
     });
     // Añade el evento click a los tabs
@@ -347,13 +368,16 @@ function actualizarCancion(id) {
 }
 function actualizarVideo(id) {
     var element = DOM.listaVideos.children[id];
-    activarCancion(element);
+    activarVideo(element);
     DOM.tituloActual.textContent = listaVideo[id].titulo;
     DOM.video.src = listaVideo[idActual].srcVideo;
 }
 // Carga la primera cancion por defecto
 function cargaPorDefecto() {
     actualizarCancion(idActual);
+}
+function cargaVideoPorDefecto() {
+    actualizarVideo(idActual);
 }
 // Carga el input range con la duracion de la cancion y le asigna el valor 0 para colocarlo al inicio.
 function defaultRange(duracion) {
@@ -388,12 +412,14 @@ function abrirTabs(elemento) {
     document.querySelector("#" + option).classList.add("active");
     if (asideBoleean == false && DOM.aside.classList.value == "audio") {
         pause();
+        document.querySelector("[data-option='video']").classList.add("gradienteInverso");
         DOM.animeAside.classList.add("none");
         DOM.artistaAside.classList.add("none");
         DOM.aside.classList.replace("audio", "video");
         asideBoleean = true;
     }
     if (asideBoleean == false && DOM.aside.classList.value == "video") {
+        pause();
         DOM.animeAside.classList.remove("none");
         DOM.artistaAside.classList.remove("none");
         DOM.aside.classList.replace("video", "audio");
@@ -407,8 +433,14 @@ function activarCancion(elemento) {
     borrarCancionActiva();
     elemento.classList.add("active");
     elemento.getElementsByTagName("img")[0].classList.add("oculto");
-    // elemento.getElementsByTagName("img")[1].classList.remove("oculto");
+    elemento.getElementsByTagName("img")[1].classList.remove("oculto");
 }
+function activarVideo(elemento) {
+    borrarCancionActiva();
+    elemento.classList.add("active");
+    elemento.getElementsByTagName("img")[0].classList.add("oculto");
+}
+    
 // Esta funcion es la que borra la cacncion que esta activa
 function borrarCancionActiva() {
     if (DOM.aside.classList.value == "audio") {
@@ -424,7 +456,7 @@ function borrarCancionActiva() {
         if (elemento != null) {
             elemento.classList.remove("active");
             elemento.getElementsByTagName("img")[0].classList.remove("oculto");
-            // elemento.getElementsByTagName("img")[1].classList.add("oculto");
+            //elemento.getElementsByTagName("img")[1].classList.add("oculto");
         }
     }
 }
