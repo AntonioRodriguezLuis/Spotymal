@@ -19,6 +19,7 @@
         <div class="divVideo">
             <div id="video-controls" class="controls" data-state="hidden">
                 <video id="reproductorVideo">
+                    <track src="./sub/subtitulos.vtt" kind="subtitles" srclang="es" label="Español">
                 </video>
             </div>
         </div>
@@ -29,6 +30,10 @@
                 <span>/</span>
                 <span id="tiempo-total"></span>
                 <input type="range" class="slider" id="range" min="0" step="0.1" value="0">
+                <select name="selectSubtitulos" id="select" disabled>
+                    <option value="sub" disabled selected>Subtitulos</option>
+                    <option value="español">Español</option>
+                </select>
             </div>
 
             <div id="reproductor">
@@ -36,6 +41,8 @@
                 <img id="play" class="play" src="./img/play.svg" alt="">
                 <img id="pause" class="play" src="./img/pause.svg" alt="">
                 <img id="siguiente" class="img" src="./img/siguiente.svg" alt="">
+                <img id="volumen" class="img" src="./img/volume.png" alt="">
+                <img id="mute" class="img" src="./img/mute.png" alt="">
             </div>
             <div class="info">
                 <div class="info-cancion" id="animeAside">

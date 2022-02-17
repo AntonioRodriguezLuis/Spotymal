@@ -17,7 +17,10 @@ const DOM = {
     aside: document.querySelector("aside"),
     video: document.querySelector("video"),
     animeAside: document.getElementById("animeAside"),
-    artistaAside: document.getElementById("artistaAside")
+    artistaAside: document.getElementById("artistaAside"),
+    volumen: document.getElementById("volumen"),
+    mute: document.getElementById("mute"),
+    select: document.getElementById("select")
 };
 var listaMusica;
 var listaVideo;
@@ -30,10 +33,10 @@ var strMusica = `[{"id":0,"srcImagen":"../img/kimetsu.jpg","anime":"Kimetsu no y
 {"id":6,"srcImagen":"../img/Shigatsu_wa_Kimi_no_Uso.jpg","anime":"Shigatsu wa Kimi no Uso","titulo":"Hikaru Nara","artista":"Goose House","duracion":"4:11 min","srcMusica":"../music/hikaruNara.mp3"},
 {"id":7,"srcImagen":"../img/onePiece.jpg","anime":"One Piece","titulo":"Dreamin' On","artista":"Da-iCE","duracion":"1:59 min","srcMusica":"../music/dreaminOn.mp3"}]`;
 var strVideo = `[{"id":0,"srcImagen":"../img/boruto.jpg","titulo":"Naruto and Sasuke vs Momoshiki","autor":"Crunchyroll","duracion":"2:40 min","srcVideo":"../video/Naruto and Sasuke vs Momoshiki _ Boruto_ Naruto Next Generations.mp4"},
-{"id":1,"srcImagen":"../img/smash.jpg","titulo":"United States of Smash","autor":"Crunchyroll","duracion":"2:33 min","srcVideo":"../video/unitedStatesOfSmash.mp4"}]`;
+{"id":1,"srcImagen":"../img/smash.jpg","titulo":"United States of Smash","autor":"Crunchyroll","duracion":"2:33 min","srcVideo":"../video/unitedStatesOfSmash.mp4"},{"id":2,"srcImagen":"../img/m.Rajoy.jpeg","titulo":"Los españoles y los alcaldes","autor":"M.Rajoy","duracion":"0:23 min","srcVideo":"../video/RAJOY, EL VECINO Y EL ALCALDE.mp4"}
+,{"id":3,"srcImagen":"../img/comunismo.jpg","titulo":"FRIENDS version rusa","autor":"La URS","duracion":"0:43 min","srcVideo":"../video/videoplayback.mp4"}]`;
 var idActual = 0;// Variable global para saber que audio se esta ejecutando
 var audio = new Audio();// Creamos el audio
-
 
 (function () {
     listaMusica = JSON.parse(strMusica);
@@ -45,7 +48,10 @@ var audio = new Audio();// Creamos el audio
     DOM.anterior.addEventListener('click', anterior);
     DOM.siguiente.addEventListener('click', siguiente);
     DOM.pause.addEventListener('click', pause);
+    DOM.volumen.addEventListener('click', volumen);
+    DOM.mute.addEventListener('click', mute);
     DOM.pause.classList.add("oculto");
+    DOM.mute.classList.add("oculto");
     DOM.anterior.classList.add("disable-div");
 
     // Cuando termina de cargar el audio ejecuta este listener, que asigna el tiempo de inicio y total del audio 
@@ -67,12 +73,14 @@ var audio = new Audio();// Creamos el audio
         var tiempoCustom = personalizarTiempo(audio.currentTime);
         DOM.tiempoActual.textContent = tiempoCustom;
         DOM.inputRange.value = audio.currentTime;
+        actulizarInputRange();
     });
 
     DOM.video.addEventListener("timeupdate", () => {
         var tiempoCustom = personalizarTiempo(DOM.video.currentTime);
         DOM.tiempoActual.textContent = tiempoCustom;
         DOM.inputRange.value = DOM.video.currentTime;
+        actulizarInputRange();
     });
     // Justo cuando termine
     audio.addEventListener("ended", () => {
@@ -84,8 +92,8 @@ var audio = new Audio();// Creamos el audio
 
     // Carga la primera cancion por defecto
     cargaPorDefecto();
-    cargaVideoPorDefecto();
-
+    
+    DOM.select.addEventListener("change",subtitulos);
     // Este listener se dispara cuado cambias el input manualmente y pone la cancion en ese punto(Es como adelantar en un video de youtube)
     DOM.inputRange.addEventListener("change", () => {
         pause();
@@ -103,7 +111,11 @@ var audio = new Audio();// Creamos el audio
     });
 })()
 
-
+function subtitulos(){
+    if(DOM.select.value=="español"){
+        DOM.video.textTracks[0].mode = "showing";
+    }
+}
 // Función que añade una nueva canción a la tabla.
 function generarListaMusica() {
     listaMusica.forEach(function (cancion) {
@@ -204,6 +216,11 @@ function generarListaVideos() {
         play.setAttribute("src", "../img/play.svg");
         play.classList.add("icon");
         divVideo.insertAdjacentElement("beforeend", play);
+
+        let rep = document.createElement("img");
+        rep.setAttribute("src", "../img/volumeOrange.png");
+        rep.classList.add("icon", "oculto");
+        divVideo.insertAdjacentElement("beforeend", rep);
 
         // Elemento div
         let imgVideo = document.createElement("div");
@@ -322,7 +339,7 @@ function anterior() {
         }
         if (DOM.aside.classList.value == "video") {
             actualizarVideo(idAnterior);
-        }    
+        }
         play();
         DOM.siguiente.classList.remove("disable-div");
     } if (idAnterior == 0) {
@@ -356,6 +373,37 @@ function siguiente() {
     }
 
 }
+
+function mute() {
+    console.log(DOM.video.muted);
+    if (DOM.aside.classList.value == "audio") {
+        audio.muted = false;
+        DOM.mute.classList.add("oculto");
+        DOM.volumen.classList.remove("oculto");
+    }
+    if (DOM.aside.classList.value == "video") {
+        
+        DOM.video.muted = false;
+        DOM.mute.classList.add("oculto");
+        DOM.volumen.classList.remove("oculto");
+    }
+    console.log(DOM.video.muted);
+}
+function volumen() {
+    if (DOM.aside.classList.value == "audio") {
+        audio.muted = true;
+        DOM.mute.classList.remove("oculto");
+        DOM.volumen.classList.add("oculto");
+    }
+    if (DOM.aside.classList.value == "video") {
+        console.log(DOM.video.muted);
+        DOM.video.muted = true;
+        DOM.mute.classList.remove("oculto");
+        DOM.volumen.classList.add("oculto");
+    }
+}
+
+
 //Esta funcion actualiza la cancion que se esta escuchando en este momento
 function actualizarCancion(id) {
     var element = DOM.listaMusica.children[id];
@@ -364,20 +412,28 @@ function actualizarCancion(id) {
     DOM.animeActual.textContent = listaMusica[id].anime;
     DOM.artistaActual.textContent = listaMusica[id].artista;
     DOM.imagenActive.style.backgroundImage = "url('" + listaMusica[id].srcImagen + "')";
-    audio.src = listaMusica[idActual].srcMusica;
+    audio.src = listaMusica[id].srcMusica;
 }
 function actualizarVideo(id) {
+    console.log(id);
+    DOM.video.textTracks[0].mode = "disabled";
+    DOM.select.value = 'sub';
+    DOM.select.disabled = true;
+    if(id==2){
+        console.log("ey")
+        DOM.select.disabled = false;
+    }
     var element = DOM.listaVideos.children[id];
     activarVideo(element);
     DOM.tituloActual.textContent = listaVideo[id].titulo;
-    DOM.video.src = listaVideo[idActual].srcVideo;
+    DOM.video.src = listaVideo[id].srcVideo;
 }
 // Carga la primera cancion por defecto
 function cargaPorDefecto() {
-    actualizarCancion(idActual);
+    actualizarCancion(0);
 }
 function cargaVideoPorDefecto() {
-    actualizarVideo(idActual);
+    actualizarVideo(0);
 }
 // Carga el input range con la duracion de la cancion y le asigna el valor 0 para colocarlo al inicio.
 function defaultRange(duracion) {
@@ -416,6 +472,7 @@ function abrirTabs(elemento) {
         DOM.animeAside.classList.add("none");
         DOM.artistaAside.classList.add("none");
         DOM.aside.classList.replace("audio", "video");
+        cargaVideoPorDefecto();
         asideBoleean = true;
     }
     if (asideBoleean == false && DOM.aside.classList.value == "video") {
@@ -423,6 +480,7 @@ function abrirTabs(elemento) {
         DOM.animeAside.classList.remove("none");
         DOM.artistaAside.classList.remove("none");
         DOM.aside.classList.replace("video", "audio");
+        cargaPorDefecto();
         asideBoleean = true;
     }
 
@@ -439,8 +497,9 @@ function activarVideo(elemento) {
     borrarCancionActiva();
     elemento.classList.add("active");
     elemento.getElementsByTagName("img")[0].classList.add("oculto");
+    elemento.getElementsByTagName("img")[1].classList.remove("oculto");
 }
-    
+
 // Esta funcion es la que borra la cacncion que esta activa
 function borrarCancionActiva() {
     if (DOM.aside.classList.value == "audio") {
@@ -456,15 +515,15 @@ function borrarCancionActiva() {
         if (elemento != null) {
             elemento.classList.remove("active");
             elemento.getElementsByTagName("img")[0].classList.remove("oculto");
-            //elemento.getElementsByTagName("img")[1].classList.add("oculto");
+            elemento.getElementsByTagName("img")[1].classList.add("oculto");
         }
     }
 }
+//Actualizar input 
+function actulizarInputRange() {
+    const min = DOM.inputRange.min
+    const max = DOM.inputRange.max
+    const val = DOM.inputRange.value
 
-
-
-//TO DO
-/*
-- color del input range naranja 
-- dar un alto a la caja y sino que le salga un scroll
-*/ 
+    DOM.inputRange.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+}
