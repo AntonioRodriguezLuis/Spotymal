@@ -1,0 +1,143 @@
+@mixin imagenes {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+html,body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+$color_primary: #20268c;
+$color_secondary: #1d2059;
+$color_bg: #262626;
+$color_white: white;
+
+body {
+    display: flex;
+    flex-direction: column;
+    main {
+        display: flex;
+        height: 100%;
+        
+        aside {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            padding-bottom: 0;
+            gap: 1rem;
+            width: 20%;
+            background: $color_bg;
+            div{
+                height: 100px;
+                display: flex;
+                .logo {
+                    height: 70px;
+                    width: 100px;
+                }
+                h1{
+                    margin-top: 30px;
+                    color: $color_white;
+                }
+            }
+            #imagen {
+                height: 200px;
+                width: 100%;
+                background-image: url("../img/logo.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+            }
+            #imagen.cancion0{
+                background-image: url("../img/kimetsu.jpg");
+            }
+            #imagen.cancion1{
+                background-image: url("../img/shingeki.jpg");
+            }
+            #imagen.cancion2{
+                background-image: url("../img/tokyoGhoul.jpg");
+            }
+            #imagen.cancion3{
+                background-image: url("../img/drStone.jpg");
+            }
+            audio {
+                align-self: center;
+                width: 100%;
+            }
+            h2{
+                color: $color_white;
+            }
+            .botones{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                div{
+                    height: 30%;
+                    width: 60px;
+                    background-color: $color_primary;
+                    color: $color_white;
+                    border-radius: 5px;
+                    p{
+                        margin: auto;
+                    }
+                }
+            }
+            p{
+                color: $color_white;
+                margin-bottom: 5px;
+                
+            }
+        }
+        section {
+            padding: 1rem;
+            background-color: $color_bg;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            #listaMusica{
+                width: 70%;
+                ul{
+                    list-style-type: none;
+                    li{
+                        .cancionInfo{
+                            display: flex;
+                            gap: 20px;
+                            width: fit-content;
+                            color: $color_white;
+                            img{
+                                height: 100%;
+                                width: 30%;
+                            }
+                            .info{
+                                display: flex;
+                                flex-wrap: wrap;
+                                align-items: center;
+                                justify-content: space-around;
+                                gap: 1rem;
+                                font-size: 1.5rem;
+                                color: $color_white;
+                                h3{
+                                    text-align: center;
+                                    width: 100%;
+                                    margin: 0;
+                                }
+                                p{
+                                    margin: 0;
+                                }
+                                div{
+                                    height: 100%;
+                                    color: $color_white;
+                                    display: flex;
+                                    align-items: center;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
